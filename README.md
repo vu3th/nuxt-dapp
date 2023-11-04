@@ -1,4 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Nuxt Dapp
+
+This project integrated with vue-dapp v1
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
