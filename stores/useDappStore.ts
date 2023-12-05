@@ -77,7 +77,7 @@ export const useDappStore = defineStore('dapp', {
 	},
 	actions: {
 		setUser(user: User) {
-			this.user = markRaw(user)
+			this.user = user
 		},
 		resetUser() {
 			this.user.address = ''

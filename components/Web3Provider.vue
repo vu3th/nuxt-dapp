@@ -21,7 +21,7 @@ onActivated(async ({ address, provider, chainId }) => {
 
 	dappStore.setUser({
 		address,
-		signer,
+		signer: markRaw(signer),
 		chainId: chainId,
 	})
 })
@@ -32,7 +32,7 @@ onChanged(async ({ address, provider, chainId }) => {
 
 	dappStore.setUser({
 		address,
-		signer,
+		signer: markRaw(signer),
 		chainId,
 	})
 })
