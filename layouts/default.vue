@@ -2,9 +2,9 @@
 
 <template>
 	<div>
-		<Web3Provider>
+		<DappProvider>
 			<TheHeader />
 			<slot />
-		</Web3Provider>
+		</DappProvider>
 	</div>
 </template>

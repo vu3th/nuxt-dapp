@@ -4,6 +4,7 @@ import invariant from 'tiny-invariant'
 import { createPublicClient, type Chain, http, type PublicClient, type Abi, getAddress } from 'viem'
 import { HARDHAT_PRIV_KEY, MULTICALL3_ADDRESS } from '@/constants'
 import { networkMap, type AppNetwork } from '@/constants'
+import { useWalletStore } from '@vue-dapp/core'
 
 export type DappState = {
 	user: User
@@ -95,6 +96,29 @@ export const useDappStore = defineStore('dapp', {
 				}),
 				multicallAddress: getAddress(this.multicallAddress),
 			})
+		},
+		async switchChain() {
+			const { connector } = storeToRefs(useWalletStore())
+			try {
+				if (connector.value) {
+					if (this.chainId === 421613) {
+						await connector.value.switchChain?.(421613, {
+							chainId: '0x66eed',
+							chainName: 'Arbitrum Goerli',
+							nativeCurrency: {
+								symbol: 'AGOR',
+								decimals: 18,
+							},
+							rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'],
+							blockExplorerUrls: ['https://goerli.arbiscan.io/'],
+						})
+					} else {
+						await connector.value.switchChain?.(this.chainId)
+					}
+				}
+			} catch (err: any) {
+				console.error(err)
+			}
 		},
 	},
 	persist: {

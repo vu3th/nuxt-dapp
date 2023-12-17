@@ -6,23 +6,14 @@ import { useBoardStore } from '@vue-dapp/vd-board'
 import { shortenAddress, useWalletStore } from '@vue-dapp/core'
 
 const pinia = usePinia()
-const { open } = useBoardStore(pinia)
+
+const boardStore = useBoardStore(pinia)
+
 const walletStore = useWalletStore(pinia)
-const { disconnect } = walletStore
-const { connector, status, isConnected } = storeToRefs(walletStore)
+const { status, isConnected } = storeToRefs(walletStore)
 
 const dappStore = useDappStore()
 const { isNetworkUnmatched, user } = storeToRefs(dappStore)
-
-async function onSwitchChain() {
-	try {
-		if (connector.value) {
-			await connector.value.switchChain?.(dappStore.chainId)
-		}
-	} catch (err: any) {
-		console.error(err)
-	}
-}
 </script>
 
 <template>
@@ -37,7 +28,7 @@ async function onSwitchChain() {
 					name="i-ic:baseline-switch-access-shortcut"
 					v-if="isNetworkUnmatched"
 					class="clickable"
-					@click="onSwitchChain"
+					@click="dappStore.switchChain"
 				/>
 
 				<p v-else>{{ shortenAddress(user.address) }}</p>
@@ -49,11 +40,11 @@ async function onSwitchChain() {
 					@click="copy(user.address)"
 				/>
 
-				<Icon name="i-ic:baseline-logout" class="clickable" @click="disconnect" />
+				<Icon name="i-ic:baseline-logout" class="clickable" @click="walletStore.disconnect" />
 			</div>
 		</div>
 
-		<BaseButton class="rounded-3xl w-auto" v-else @click="open()" :disabled="status === 'connecting'">
+		<BaseButton class="rounded-3xl w-auto" v-else @click="boardStore.open" :disabled="status === 'connecting'">
 			{{ status === 'connecting' ? 'Connecting...' : '' }}
 			<Icon name="i-octicon-plug-24" v-if="status !== 'connecting'" />
 		</BaseButton>
