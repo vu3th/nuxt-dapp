@@ -10,7 +10,7 @@ withDefaults(
 </script>
 
 <template>
-	<i-ic-baseline-content-copy class="clickable" @click="copy(content)" />
+	<Icon name="i-ic-baseline-content-copy" class="clickable" @click="copy(content)" />
 </template>
 
 <style lang="scss"></style>

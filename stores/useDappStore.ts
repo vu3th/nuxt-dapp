@@ -9,7 +9,9 @@ import { useWalletStore } from '@vue-dapp/core'
 export type DappState = {
 	user: User
 	network: AppNetwork
+	blockNumber: number
 }
+
 export type User = {
 	signer: Signer | null
 	address: string
@@ -28,6 +30,7 @@ export const useDappStore = defineStore('dapp', {
 			chainId: -1,
 		},
 		network: 'mainnet',
+		blockNumber: 0,
 	}),
 	getters: {
 		chain(state): Chain {
@@ -73,7 +76,7 @@ export const useDappStore = defineStore('dapp', {
 			})
 		},
 		multicallAddress(state) {
-			return MULTICALL3_ADDRESS
+			return getAddress(MULTICALL3_ADDRESS)
 		},
 	},
 	actions: {
@@ -96,6 +99,11 @@ export const useDappStore = defineStore('dapp', {
 				}),
 				multicallAddress: getAddress(this.multicallAddress),
 			})
+		},
+		async fetchBlockNumber() {
+			const num = await this.provider.getBlockNumber()
+			this.blockNumber = num
+			return num
 		},
 		async switchChain() {
 			const { connector } = storeToRefs(useWalletStore())

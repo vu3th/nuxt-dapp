@@ -71,6 +71,17 @@ function autoConnectErrorHandler(err: any) {
 	console.error('AutoConnectError', err)
 }
 
+watchImmediate(
+	() => dappStore.network,
+	async () => {
+		try {
+			await dappStore.fetchBlockNumber()
+		} catch (err: any) {
+			console.error(err)
+		}
+	},
+)
+
 watch(
 	() => dappStore.network,
 	() => {

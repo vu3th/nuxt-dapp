@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ModalsContainer } from 'vue-final-modal'
+</script>
 
 <template>
 	<div>
@@ -6,5 +8,6 @@
 			<TheHeader />
 			<slot />
 		</DappProvider>
+		<ModalsContainer />
 	</div>
 </template>
