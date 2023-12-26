@@ -1,5 +1,6 @@
 {
 	"name": "nuxt-dapp",
+	"version": "1.0.0-alpha.9",
 	"private": true,
 	"type": "module",
 	"scripts": {
