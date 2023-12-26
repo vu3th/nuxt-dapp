@@ -12,14 +12,14 @@ dependencies:
     specifier: ^0.5.0
     version: 0.5.1(vue@3.3.6)
   '@vue-dapp/core':
-    specifier: 1.0.0-alpha.8
-    version: 1.0.0-alpha.8(pinia@2.1.7)(vue@3.3.6)
+    specifier: 1.0.0-alpha.9
+    version: 1.0.0-alpha.9(pinia@2.1.7)(vue@3.3.6)
   '@vue-dapp/vd-board':
-    specifier: 1.0.0-alpha.4
-    version: 1.0.0-alpha.4(@vue-dapp/core@1.0.0-alpha.8)(pinia@2.1.7)(vue@3.3.6)
+    specifier: 1.0.0-alpha.5
+    version: 1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.9)(pinia@2.1.7)(vue@3.3.6)
   '@vue-dapp/walletconnect':
     specifier: 1.0.0-alpha.5
-    version: 1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.8)(react@18.2.0)
+    version: 1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.9)(react@18.2.0)
   '@vueuse/core':
     specifier: ^10.5.0
     version: 10.5.0(vue@3.3.6)
@@ -41,6 +41,12 @@ dependencies:
   tiny-invariant:
     specifier: ^1.3.1
     version: 1.3.1
+  vd-board@1.0.0-alpha.5:
+    specifier: link:vue-dapp/vd-board@1.0.0-alpha.5
+    version: link:vue-dapp/vd-board@1.0.0-alpha.5
+  vd-board@latest:
+    specifier: link:vue-dapp/vd-board@latest
+    version: link:vue-dapp/vd-board@latest
   viem:
     specifier: ^1.16.5
     version: 1.16.6
@@ -1965,8 +1971,8 @@ packages:
       vite: 4.5.0(sass@1.69.4)
       vue: 3.3.6
 
-  /@vue-dapp/core@1.0.0-alpha.8(pinia@2.1.7)(vue@3.3.6):
-    resolution: {integrity: sha512-BpxpLnNtqcTIaNdiOoabqPGUJNuOffkMuIjk3Az8xxVxqmsbtJZwAjRxPyw2OLodCmT/l550106M5Ghn/dKSgA==}
+  /@vue-dapp/core@1.0.0-alpha.9(pinia@2.1.7)(vue@3.3.6):
+    resolution: {integrity: sha512-OxX04TkiZtPE9w4aWxq35axRphuIh79GX0iz4IZoO2T98mufK+HS6ae4LLucN74nRNIuHZQQbYuT6pNA4D+iFQ==}
     peerDependencies:
       pinia: ^2.1.7
       vue: ^3.3.7
@@ -1976,24 +1982,24 @@ packages:
       vue: 3.3.6
     dev: false
 
-  /@vue-dapp/vd-board@1.0.0-alpha.4(@vue-dapp/core@1.0.0-alpha.8)(pinia@2.1.7)(vue@3.3.6):
-    resolution: {integrity: sha512-i2hOw5INSXcYMJboK9O5Uaw8Yd1pbSdfXz9bs9+9XXXDcgVHUoXeCC7ZfcYFOp8zUM3vRZwhbMjvokDOvV9K6Q==}
+  /@vue-dapp/vd-board@1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.9)(pinia@2.1.7)(vue@3.3.6):
+    resolution: {integrity: sha512-0kIwGUZ20rpsvE96XsFQvBrvMW/fbNST0mMIKNJ52/P2HeiImsMIBdlQRqENnxnLzzvh7hD17MCf42YAG+A9sQ==}
     peerDependencies:
       '@vue-dapp/core': workspace:^
       pinia: ^2.1.7
       vue: ^3.3.6
     dependencies:
-      '@vue-dapp/core': 1.0.0-alpha.8(pinia@2.1.7)(vue@3.3.6)
+      '@vue-dapp/core': 1.0.0-alpha.9(pinia@2.1.7)(vue@3.3.6)
       pinia: 2.1.7(vue@3.3.6)
       vue: 3.3.6
     dev: false
 
-  /@vue-dapp/walletconnect@1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.8)(react@18.2.0):
+  /@vue-dapp/walletconnect@1.0.0-alpha.5(@vue-dapp/core@1.0.0-alpha.9)(react@18.2.0):
     resolution: {integrity: sha512-xVkfJojXUEPSnnOsUEIgYruWeF8UdZUQsTxW3D7iGmSCccdI1sFA3Or567vfcLiSUK911pZrPL+44RbBrO+DQg==}
     peerDependencies:
       '@vue-dapp/core': workspace:^
     dependencies:
-      '@vue-dapp/core': 1.0.0-alpha.8(pinia@2.1.7)(vue@3.3.6)
+      '@vue-dapp/core': 1.0.0-alpha.9(pinia@2.1.7)(vue@3.3.6)
       '@walletconnect/ethereum-provider': 2.10.6(react@18.2.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
