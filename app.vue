@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { type WalletContext, MetaMaskConnector, useVueDapp } from '@vue-dapp/core'
+import { type WalletContext, MetaMaskConnector, useVueDapp, VueDappProvider } from '@vue-dapp/core'
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
-import { DappProvider, useBoardStore } from '@vue-dapp/vd-board'
-import '@vue-dapp/vd-board/dist/style.css'
 
-const pinia = usePinia()
-const boardStore = useBoardStore(pinia)
+const pinia = useNuxtApp().$pinia
 
 const connectors = [
 	new MetaMaskConnector(),
@@ -26,7 +23,7 @@ const connectors = [
 	}),
 ]
 
-async function handleConnect({ provider, address, chainId }: WalletContext) {
+function handleConnect({ provider, address, chainId }: WalletContext) {
 	console.log('handleConnect')
 }
 
@@ -34,24 +31,38 @@ function handleDisconnect() {
 	console.log('handleDisconnect')
 }
 
-const { isConnected, address, chainId, disconnect } = useVueDapp(pinia)
+const { status, isConnected, address, chainId, error, disconnect, connectWith } = useVueDapp(pinia)
 
-function onClickConnectButton() {
+function onClickMetaMask() {
 	if (!isConnected.value) {
-		boardStore.open()
-	} else {
-		disconnect()
+		connectWith(connectors[0])
+	}
+}
+
+function onClickWalletConnect() {
+	if (!isConnected.value) {
+		connectWith(connectors[1])
 	}
 }
 </script>
 
 <template>
 	<div>
-		<DappProvider :pinia="pinia" :connectors="connectors" @connect="handleConnect" @disconnect="handleDisconnect">
-			<button @click="onClickConnectButton">{{ isConnected ? 'Disconnect' : 'Connect Wallet' }}</button>
+		<VueDappProvider :pinia="pinia" @connect="handleConnect" @disconnect="handleDisconnect">
+			<div v-if="!isConnected">
+				<button :disabled="status !== 'idle'" @click="onClickMetaMask">Connect with MetaMask</button>
+				<button :disabled="status !== 'idle'" @click="onClickWalletConnect">Connect with WalletConnect</button>
+			</div>
+			<button v-else @click="disconnect">Disconnect</button>
 
-			<p v-if="chainId !== -1">Chain ID: {{ chainId }}</p>
-			<p>{{ address }}</p>
-		</DappProvider>
+			<div>status: {{ status }}</div>
+			<div>isConnected: {{ isConnected }}</div>
+			<div>error: {{ error }}</div>
+
+			<div v-if="isConnected">
+				<div v-if="chainId !== -1">chainId: {{ chainId }}</div>
+				<div>address: {{ address }}</div>
+			</div>
+		</VueDappProvider>
 	</div>
 </template>
