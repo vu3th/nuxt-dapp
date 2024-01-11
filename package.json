@@ -17,6 +17,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vue-dapp/core": "1.0.0-beta.6",
+    "@vue-dapp/nuxt": "1.0.0-beta.6",
     "@vue-dapp/walletconnect": "1.0.0-beta.6",
     "pinia": "^2.1.7"
   }

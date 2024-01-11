@@ -11,6 +11,9 @@ dependencies:
   '@vue-dapp/core':
     specifier: 1.0.0-beta.6
     version: 1.0.0-beta.6(pinia@2.1.7)(vue@3.4.5)
+  '@vue-dapp/nuxt':
+    specifier: 1.0.0-beta.6
+    version: 1.0.0-beta.6(@vue-dapp/core@1.0.0-beta.6)
   '@vue-dapp/walletconnect':
     specifier: 1.0.0-beta.6
     version: 1.0.0-beta.6(@vue-dapp/core@1.0.0-beta.6)(react@18.2.0)
@@ -1739,6 +1742,18 @@ packages:
       pinia: 2.1.7(vue@3.4.5)
       tiny-invariant: 1.3.1
       vue: 3.4.5
+    dev: false
+
+  /@vue-dapp/nuxt@1.0.0-beta.6(@vue-dapp/core@1.0.0-beta.6):
+    resolution: {integrity: sha512-Qu9KBunnCMDWISFs5rAKQqJcFbbLLuXuFsiGHKphqMk2fTxEgbM+ati/EBxEO3VmwAHVqbV9RtPVA2LADvTPog==}
+    peerDependencies:
+      '@vue-dapp/core': workspace:^
+    dependencies:
+      '@nuxt/kit': 3.9.0
+      '@vue-dapp/core': 1.0.0-beta.6(pinia@2.1.7)(vue@3.4.5)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: false
 
   /@vue-dapp/walletconnect@1.0.0-beta.6(@vue-dapp/core@1.0.0-beta.6)(react@18.2.0):

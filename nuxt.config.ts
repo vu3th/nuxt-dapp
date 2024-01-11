@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	modules: [
+		'@vue-dapp/nuxt',
 		[
 			'@pinia/nuxt',
 			{
