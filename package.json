@@ -11,11 +11,13 @@
   },
   "devDependencies": {
     "nuxt": "^3.9.0",
+    "vite-plugin-node-polyfills": "^0.19.0",
     "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
+    "@vue-dapp/coinbase": "1.0.0-beta.1",
     "@vue-dapp/core": "1.0.0-beta.6",
     "@vue-dapp/nuxt": "1.0.0-beta.6",
     "@vue-dapp/walletconnect": "1.0.0-beta.6",

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { type WalletContext, MetaMaskConnector, VueDappProvider } from '@vue-dapp/core'
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
+import { CoinbaseWalletConnector } from '@vue-dapp/coinbase'
 
 const connectors = [
 	new MetaMaskConnector(),
@@ -18,6 +19,10 @@ const connectors = [
 			privacyPolicyUrl: undefined,
 			termsOfServiceUrl: undefined,
 		},
+	}),
+	new CoinbaseWalletConnector({
+		appName: 'Vue Dapp',
+		jsonRpcUrl: `https://mainnet.infura.io/v3/ff6a249a74e048f1b413cba715f98d07`,
 	}),
 ]
 
@@ -42,6 +47,12 @@ function onClickWalletConnect() {
 		connectWith(connectors[1])
 	}
 }
+
+function onClickCoinbase() {
+	if (!isConnected.value) {
+		connectWith(connectors[2])
+	}
+}
 </script>
 
 <template>
@@ -50,6 +61,7 @@ function onClickWalletConnect() {
 			<div v-if="!isConnected">
 				<button :disabled="status !== 'idle'" @click="onClickMetaMask">Connect with MetaMask</button>
 				<button :disabled="status !== 'idle'" @click="onClickWalletConnect">Connect with WalletConnect</button>
+				<button :disabled="status !== 'idle'" @click="onClickCoinbase">Connect with Coinbase</button>
 			</div>
 			<button v-else @click="disconnect">Disconnect</button>
 
