@@ -1,57 +1,59 @@
 <script lang="ts" setup>
-import { type WalletContext, MetaMaskConnector, VueDappProvider } from '@vue-dapp/core'
+import { BrowserWalletConnector, VueDappProvider, type ConnWallet, RDNS } from '@vue-dapp/core'
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
 import { CoinbaseWalletConnector } from '@vue-dapp/coinbase'
 
-const connectors = [
-	new MetaMaskConnector(),
-	new WalletConnectConnector({
-		projectId: '3f3c98042b194264687bf59e104c534a',
-		chains: [1],
-		showQrModal: true,
-		qrModalOptions: {
-			themeMode: 'dark',
-			themeVariables: undefined,
-			desktopWallets: undefined,
-			walletImages: undefined,
-			mobileWallets: undefined,
-			enableExplorer: true,
-			privacyPolicyUrl: undefined,
-			termsOfServiceUrl: undefined,
-		},
-	}),
-	new CoinbaseWalletConnector({
-		appName: 'Vue Dapp',
-		jsonRpcUrl: `https://mainnet.infura.io/v3/ff6a249a74e048f1b413cba715f98d07`,
-	}),
-]
+const { status, isConnected, address, chainId, error, disconnect, connectTo, addConnectors } = useVueDapp()
 
-function handleConnect({ provider, address, chainId }: WalletContext) {
-	console.log('handleConnect')
+if (process.client) {
+	addConnectors([
+		new BrowserWalletConnector(),
+		new WalletConnectConnector({
+			projectId: '3f3c98042b194264687bf59e104c534a',
+			chains: [1],
+			showQrModal: true,
+			qrModalOptions: {
+				themeMode: 'dark',
+				themeVariables: undefined,
+				desktopWallets: undefined,
+				walletImages: undefined,
+				mobileWallets: undefined,
+				enableExplorer: true,
+				privacyPolicyUrl: undefined,
+				termsOfServiceUrl: undefined,
+			},
+		}),
+		new CoinbaseWalletConnector({
+			appName: 'Vue Dapp',
+			jsonRpcUrl: `https://mainnet.infura.io/v3/ff6a249a74e048f1b413cba715f98d07`,
+		}),
+	])
 }
 
-function handleDisconnect() {
-	console.log('handleDisconnect')
-}
-
-const { status, isConnected, address, chainId, error, disconnect, connectWith } = useVueDapp()
-
-function onClickMetaMask() {
+function onClickMetamask() {
 	if (!isConnected.value) {
-		connectWith(connectors[0])
+		connectTo('BrowserWallet', { rdns: RDNS.metamask })
 	}
 }
 
 function onClickWalletConnect() {
 	if (!isConnected.value) {
-		connectWith(connectors[1])
+		connectTo('WalletConnect')
 	}
 }
 
 function onClickCoinbase() {
 	if (!isConnected.value) {
-		connectWith(connectors[2])
+		connectTo('CoinbaseWallet')
 	}
+}
+
+function handleConnect(wallet: ConnWallet) {
+	console.log('handleConnect', wallet)
+}
+
+function handleDisconnect() {
+	console.log('handleDisconnect')
 }
 </script>
 
@@ -59,7 +61,7 @@ function onClickCoinbase() {
 	<div>
 		<VueDappProvider @connect="handleConnect" @disconnect="handleDisconnect">
 			<div v-if="!isConnected">
-				<button :disabled="status !== 'idle'" @click="onClickMetaMask">Connect with MetaMask</button>
+				<button :disabled="status !== 'idle'" @click="onClickMetamask">Connect with MetaMask</button>
 				<button :disabled="status !== 'idle'" @click="onClickWalletConnect">Connect with WalletConnect</button>
 				<button :disabled="status !== 'idle'" @click="onClickCoinbase">Connect with Coinbase</button>
 			</div>
