@@ -1,9 +1,19 @@
 <script lang="ts" setup>
-import { BrowserWalletConnector, VueDappProvider, type ConnWallet, RDNS } from '@vue-dapp/core'
+import { BrowserWalletConnector, VueDappProvider, type ConnWallet } from '@vue-dapp/core'
+import { VueDappModal } from '@vue-dapp/modal'
+import '@vue-dapp/modal/dist/style.css'
+
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
 import { CoinbaseWalletConnector } from '@vue-dapp/coinbase'
 
-const { status, isConnected, address, chainId, error, disconnect, connectTo, addConnectors } = useVueDapp()
+const { status, isConnected, address, chainId, error, disconnect, addConnectors } = useVueDapp()
+
+const isModalOpen = ref(false)
+
+function onClickConnectBtn() {
+	if (isConnected.value) disconnect()
+	else isModalOpen.value = true
+}
 
 if (process.client) {
 	addConnectors([
@@ -30,24 +40,6 @@ if (process.client) {
 	])
 }
 
-function onClickMetamask() {
-	if (!isConnected.value) {
-		connectTo('BrowserWallet', { rdns: RDNS.metamask })
-	}
-}
-
-function onClickWalletConnect() {
-	if (!isConnected.value) {
-		connectTo('WalletConnect')
-	}
-}
-
-function onClickCoinbase() {
-	if (!isConnected.value) {
-		connectTo('CoinbaseWallet')
-	}
-}
-
 function handleConnect(wallet: ConnWallet) {
 	console.log('handleConnect', wallet)
 }
@@ -60,12 +52,7 @@ function handleDisconnect() {
 <template>
 	<div>
 		<VueDappProvider @connect="handleConnect" @disconnect="handleDisconnect">
-			<div v-if="!isConnected">
-				<button :disabled="status !== 'idle'" @click="onClickMetamask">Connect with MetaMask</button>
-				<button :disabled="status !== 'idle'" @click="onClickWalletConnect">Connect with WalletConnect</button>
-				<button :disabled="status !== 'idle'" @click="onClickCoinbase">Connect with Coinbase</button>
-			</div>
-			<button v-else @click="disconnect">Disconnect</button>
+			<button @click="onClickConnectBtn">{{ isConnected ? 'Disconnect' : 'Connect' }}</button>
 
 			<div>status: {{ status }}</div>
 			<div>isConnected: {{ isConnected }}</div>
@@ -75,6 +62,8 @@ function handleDisconnect() {
 				<div v-if="chainId !== -1">chainId: {{ chainId }}</div>
 				<div>address: {{ address }}</div>
 			</div>
+
+			<VueDappModal v-model="isModalOpen" dark auto-connect />
 		</VueDappProvider>
 	</div>
 </template>

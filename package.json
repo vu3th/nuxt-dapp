@@ -19,6 +19,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@vue-dapp/coinbase": "1.0.0-beta.12",
     "@vue-dapp/core": "1.0.0-beta.12",
+    "@vue-dapp/modal": "1.0.0-beta.13",
     "@vue-dapp/nuxt": "1.0.0-beta.12",
     "@vue-dapp/walletconnect": "1.0.0-beta.12",
     "pinia": "^2.1.7"

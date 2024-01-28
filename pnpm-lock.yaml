@@ -14,6 +14,9 @@ dependencies:
   '@vue-dapp/core':
     specifier: 1.0.0-beta.12
     version: 1.0.0-beta.12(pinia@2.1.7)(vue@3.4.5)
+  '@vue-dapp/modal':
+    specifier: 1.0.0-beta.13
+    version: 1.0.0-beta.13(@vue-dapp/core@1.0.0-beta.12)(vue@3.4.5)
   '@vue-dapp/nuxt':
     specifier: 1.0.0-beta.12
     version: 1.0.0-beta.12(@vue-dapp/core@1.0.0-beta.12)
@@ -2191,6 +2194,16 @@ packages:
     dependencies:
       pinia: 2.1.7(vue@3.4.5)
       tiny-invariant: 1.3.1
+      vue: 3.4.5
+    dev: false
+
+  /@vue-dapp/modal@1.0.0-beta.13(@vue-dapp/core@1.0.0-beta.12)(vue@3.4.5):
+    resolution: {integrity: sha512-4/xUaTAgU/LUwQELk4qad7BBuKW2aSvy5AcTvyVXtw1KUKkOsfavr8ts755nTCd9M7DSsBXo8I300eL6OIx1Mg==}
+    peerDependencies:
+      '@vue-dapp/core': '*'
+      vue: ^3.3.6
+    dependencies:
+      '@vue-dapp/core': 1.0.0-beta.12(pinia@2.1.7)(vue@3.4.5)
       vue: 3.4.5
     dev: false
 
