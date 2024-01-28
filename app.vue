@@ -59,7 +59,7 @@ function handleDisconnect() {
 			<div>error: {{ error }}</div>
 
 			<div v-if="isConnected">
-				<div v-if="chainId !== -1">chainId: {{ chainId }}</div>
+				<div>chainId: {{ chainId }}</div>
 				<div>address: {{ address }}</div>
 			</div>
 
