@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
-    "@vue-dapp/coinbase": "1.0.0-beta.17",
-    "@vue-dapp/core": "1.0.0-beta.17",
-    "@vue-dapp/modal": "1.0.0-beta.17",
-    "@vue-dapp/nuxt": "1.0.0-beta.17",
-    "@vue-dapp/walletconnect": "1.0.0-beta.17",
+    "@vue-dapp/coinbase": "1.0.0",
+    "@vue-dapp/core": "1.0.0",
+    "@vue-dapp/modal": "1.0.0",
+    "@vue-dapp/nuxt": "1.0.0",
+    "@vue-dapp/walletconnect": "1.0.0",
     "pinia": "^2.1.7"
   }
 }

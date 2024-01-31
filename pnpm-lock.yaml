@@ -9,20 +9,20 @@ dependencies:
     specifier: ^0.5.1
     version: 0.5.1(vue@3.4.15)
   '@vue-dapp/coinbase':
-    specifier: 1.0.0-beta.17
-    version: 1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)
+    specifier: 1.0.0
+    version: 1.0.0(@vue-dapp/core@1.0.0)
   '@vue-dapp/core':
-    specifier: 1.0.0-beta.17
-    version: 1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15)
+    specifier: 1.0.0
+    version: 1.0.0(pinia@2.1.7)(vue@3.4.15)
   '@vue-dapp/modal':
-    specifier: 1.0.0-beta.17
-    version: 1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)(vue@3.4.15)
+    specifier: 1.0.0
+    version: 1.0.0(@vue-dapp/core@1.0.0)(vue@3.4.15)
   '@vue-dapp/nuxt':
-    specifier: 1.0.0-beta.17
-    version: 1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)
+    specifier: 1.0.0
+    version: 1.0.0(@vue-dapp/core@1.0.0)
   '@vue-dapp/walletconnect':
-    specifier: 1.0.0-beta.17
-    version: 1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)(react@18.2.0)
+    specifier: 1.0.0
+    version: 1.0.0(@vue-dapp/core@1.0.0)(react@18.2.0)
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(vue@3.4.15)
@@ -2084,13 +2084,13 @@ packages:
       vue: 3.4.15
     dev: true
 
-  /@vue-dapp/coinbase@1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17):
-    resolution: {integrity: sha512-/5+mgp/mBg7PqAgSVT0UgEG6iiz97IwFu0YjcPP++pw8Al+wsasoF+H7SDuFK4Ve+2+tcTWsjdjiIw7AoD9/9g==}
+  /@vue-dapp/coinbase@1.0.0(@vue-dapp/core@1.0.0):
+    resolution: {integrity: sha512-Ypxydzi/ZLLUW8NWmPeDV07RH2S7KsUO4lHp0YLINXBILeTavVOY5aA1f9BP2b/aX2+tBlNKW9spOHzszfzceg==}
     peerDependencies:
       '@vue-dapp/core': '*'
     dependencies:
       '@coinbase/wallet-sdk': 3.7.2
-      '@vue-dapp/core': 1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15)
+      '@vue-dapp/core': 1.0.0(pinia@2.1.7)(vue@3.4.15)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -2098,8 +2098,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@vue-dapp/core@1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15):
-    resolution: {integrity: sha512-laefLmWA0rha5vw30fM8wrzJ4swTWOwMF4TkdmPWKABLLmgHdcHzCeyixhmf4MjI/z6rL41tHG3dSROZXHirjA==}
+  /@vue-dapp/core@1.0.0(pinia@2.1.7)(vue@3.4.15):
+    resolution: {integrity: sha512-qaZqjLIhEXkV2mfsFHNStMLlD9A7eGJCjpHgXhIfIjAjIwjsRbUNhbN3W6dPbwiTyH8CJbsaMyOK+DrKFjDuow==}
     peerDependencies:
       pinia: ^2.1.7
       vue: ^3.3.7
@@ -2108,34 +2108,34 @@ packages:
       vue: 3.4.15
     dev: false
 
-  /@vue-dapp/modal@1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)(vue@3.4.15):
-    resolution: {integrity: sha512-CSJfqiTInc2627omk/htpet/E5qP9Sg4rbCgn9hEhHyA+iJCrYj8CQao7gT/TbGtuZrzI8bCAnOKP64REpiMUQ==}
+  /@vue-dapp/modal@1.0.0(@vue-dapp/core@1.0.0)(vue@3.4.15):
+    resolution: {integrity: sha512-FJW4a3Zm5GyaDFNeaUfV8n6OEUJOqO5QCyN+4N9LE57ZWouYniSf+pelCaRDtB8TNFVpvjaLXKFlFEmydBxYHQ==}
     peerDependencies:
       '@vue-dapp/core': '*'
       vue: ^3.3.6
     dependencies:
-      '@vue-dapp/core': 1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15)
+      '@vue-dapp/core': 1.0.0(pinia@2.1.7)(vue@3.4.15)
       vue: 3.4.15
     dev: false
 
-  /@vue-dapp/nuxt@1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17):
-    resolution: {integrity: sha512-DPmGmzE+BRjPldSJzoJkaw2mpL0QIpBqkNk9VPBgDE84vGLG81Yz+4KXehlzm7J0Qo2iklami5jLw24IqhSX5g==}
+  /@vue-dapp/nuxt@1.0.0(@vue-dapp/core@1.0.0):
+    resolution: {integrity: sha512-bW+P5iZZTqZByBXnmRAiwTNGHzuA5Wwh5pfoyumxxwPdiJgXwFcJ9/9NDcNdzRrsZZs4WWjx6nINodbE7qPlag==}
     peerDependencies:
       '@vue-dapp/core': '*'
     dependencies:
       '@nuxt/kit': 3.10.0
-      '@vue-dapp/core': 1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15)
+      '@vue-dapp/core': 1.0.0(pinia@2.1.7)(vue@3.4.15)
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /@vue-dapp/walletconnect@1.0.0-beta.17(@vue-dapp/core@1.0.0-beta.17)(react@18.2.0):
-    resolution: {integrity: sha512-3+exVYoSISuZp9o9sgt3Uo/ZxWOY/y9l6nv/K2a8gaPHAA17IRmfcDI+eP4atqwqHKqbkcYz/4KEly8+x/nQAA==}
+  /@vue-dapp/walletconnect@1.0.0(@vue-dapp/core@1.0.0)(react@18.2.0):
+    resolution: {integrity: sha512-gOrTR07bsQFE2Rhmteq6fG1zMKt95rGV3wH/LwJntafgRpjyAdzN7FwHEAEEFOG1PJ5ratQo9jYfkFaF7WuXDA==}
     peerDependencies:
       '@vue-dapp/core': '*'
     dependencies:
-      '@vue-dapp/core': 1.0.0-beta.17(pinia@2.1.7)(vue@3.4.15)
+      '@vue-dapp/core': 1.0.0(pinia@2.1.7)(vue@3.4.15)
       '@walletconnect/ethereum-provider': 2.11.0(react@18.2.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
