@@ -1,4 +1,4 @@
-name: Main Frontend
+name: Github Pages
 on: [push]
 permissions:
     contents: read
