@@ -6,6 +6,10 @@ import '@vue-dapp/modal/dist/style.css'
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
 import { CoinbaseWalletConnector } from '@vue-dapp/coinbase'
 
+// log version
+import pkg from './package.json'
+if (process.client) console.log('@vue-dapp/core version:' + pkg.dependencies['@vue-dapp/core'])
+
 const { status, isConnected, address, chainId, error, disconnect, addConnectors } = useVueDapp()
 
 const isModalOpen = ref(false)
