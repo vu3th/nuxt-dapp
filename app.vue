@@ -1,22 +1,20 @@
 <script lang="ts" setup>
-import { BrowserWalletConnector, VueDappProvider, type ConnWallet } from '@vue-dapp/core'
-import { VueDappModal } from '@vue-dapp/modal'
+import { BrowserWalletConnector } from '@vue-dapp/core'
+import { VueDappModal, useVueDappModal } from '@vue-dapp/modal'
 import '@vue-dapp/modal/dist/style.css'
 
 import { WalletConnectConnector } from '@vue-dapp/walletconnect'
 import { CoinbaseWalletConnector } from '@vue-dapp/coinbase'
 
-// log version
-import pkg from './package.json'
-if (process.client) console.log('@vue-dapp/core version:' + pkg.dependencies['@vue-dapp/core'])
-
-const { status, isConnected, address, chainId, error, disconnect, addConnectors } = useVueDapp()
-
-const isModalOpen = ref(false)
+const { isConnected, wallet, disconnect, addConnectors } = useVueDapp()
 
 function onClickConnectBtn() {
-	if (isConnected.value) disconnect()
-	else isModalOpen.value = true
+	if (isConnected.value) {
+		disconnect()
+	} else {
+		const { open } = useVueDappModal()
+		open()
+	}
 }
 
 if (process.client) {
@@ -43,31 +41,21 @@ if (process.client) {
 		}),
 	])
 }
-
-function handleConnect(wallet: ConnWallet) {
-	console.log('handleConnect', wallet)
-}
-
-function handleDisconnect() {
-	console.log('handleDisconnect')
-}
 </script>
 
 <template>
 	<div>
-		<VueDappProvider @connect="handleConnect" @disconnect="handleDisconnect">
-			<button @click="onClickConnectBtn">{{ isConnected ? 'Disconnect' : 'Connect' }}</button>
+		<button @click="onClickConnectBtn">{{ isConnected ? 'Disconnect' : 'Connect' }}</button>
 
-			<div>status: {{ status }}</div>
-			<div>isConnected: {{ isConnected }}</div>
-			<div>error: {{ error }}</div>
+		<div>status: {{ wallet.status }}</div>
+		<div>isConnected: {{ isConnected }}</div>
+		<div>error: {{ wallet.error }}</div>
 
-			<div v-if="isConnected">
-				<div>chainId: {{ chainId }}</div>
-				<div>address: {{ address }}</div>
-			</div>
+		<div v-if="isConnected">
+			<div>chainId: {{ wallet.chainId }}</div>
+			<div>address: {{ wallet.address }}</div>
+		</div>
 
-			<VueDappModal v-model="isModalOpen" dark auto-connect />
-		</VueDappProvider>
+		<VueDappModal dark auto-connect />
 	</div>
 </template>
